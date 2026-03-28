@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <title>Tasbeh</title>
+</head>
+<style>
+  *{
+  padding:0;
+  margin:0;
+  font-family:sans-serif;
+  background-color:#f4f4f4;
+}
+nav{
+  text-align: center;
+  padding: 16px 10px;
+  background-color: #43a047;
+  font-size: 18px;
+  font-weight: bold;
+  
+}
+.nav p{
+  background-color: #43a047 ;
+}
+.tasbeh-wrapper {
+  display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0px 15px;
+      min-height: calc(100vh - 60px);
+}
+.selection{
+  padding: 20px;
+  margin-top: 10px;
+  
+}
+.select{
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius:8px;
+  font-size: 20px;
+  
+}
+.chegara{
+  margin-top:5px;
+  
+}
+#limitNum{
+  margin-top: 2px;
+  width: 50px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  border-radius:8px;
+  font-size: 20px;
+}
+.selection label{
+  margin-bottom:10px;
+}
+
+.container{
+  width: auto;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+}
+.tupButton button{
+  margin-top: 60px;
+  width: 180px;
+  height: 180px;
+  border-radius: 100%;
+  border: 1px;
+  background-color: #43a047;
+  color: white;
+  font-size:16px;
+      font-weight: bold;
+      box-shadow: 0 8px 20px rgba(46, 125, 50, 0.4);
+      transition: transform 0.1s, box-shadow 0.1s;
+      letter-spacing: 0.5px;
+    }
+
+.tupButton button:active {
+      transform: scale(0.95);
+      box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
+
+}
+.count{
+  width: 64px;
+  height:64px;
+  text-align: center;
+  font-size: 64px;
+  font-weight: bold;
+  color: #2e7d32;
+  margin-top: 50px;
+}
+.reset-btn{
+  margin-top: 180px;
+  padding: 12px;
+  border-radius:10px;
+  border: 1px;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  font-size:10px;
+  
+  
+}
+</style>
+<body>
+  <nav>
+    <div class="siteName">
+      <p style="background-color: #43a047;color: white;">Tasbeh</p>
+    </div>
+  </nav>
+  <main class="tasbeh-wrapper">
+    <div class="selection">
+      
+    <label class="label" for="Duolar">Duolar</label>
+    <select class="select" name="Duolar" id="Duolar">
+<option value="Subhanalloh">Subhanalloh</option>
+<option value="Alhamdulillah">Alhamdulillah</option>
+<option value="Allohu Akbar">Allohu Akbar</option>
+<option value="La ilaha illalloh">La ilaha illalloh</option>
+<option value="Astaghfirulloh">Astaghfirulloh</option>
+<option value="Subhanallohi va bihamdihi">Subhanallohi va bihamdihi</option>
+<option value="Subhanallohil azim">Subhanallohil azim</option>
+<option value="La havla va la quvvata illa billah">La havla va la quvvata illa billah</option>
+<option value="Allohumma solli ala Muhammad">Allohumma solli ala Muhammad</option>
+<option value="Allohumma barik ala Muhammad">Allohumma barik ala Muhammad</option>
+  
+    </select>
+    <div class="chegara">Chegara
+    <select name="limitNum" id="limitNum">
+      <option value="7">7</option>
+      <option value="10">10</option>
+      <option value="33">33</option>
+      <option value="99">99</option>
+    </select>
+</div>
+      </div>
+      <div id="count" class="count">
+        
+      </div>
+      <div class="container">
+        
+
+        <div class="tupButton">
+          <button onclick="increment()" type="button">Bosing</button>
+        </div>
+        
+      </div>
+      <div>
+        
+      </div>
+      <button class="reset-btn" onclick="reset()">Qayta boshlash</button>
+   </main>
+    <script>
+    let count = 0;
+
+const select = document.getElementById('Duolar');
+const countEl = document.getElementById('count');
+const duoNomi = document.getElementById('duoNomi');
+const limitNum = document.getElementById('limitNum');
+
+select.addEventListener('change', () => {
+  duoNomi.textContent = select.value;
+  count = 0;
+  countEl.textContent = 0;
+});
+
+function increment() {
+  let limit = parseInt(limitNum.value);
+  count++;
+  
+  navigator.vibrate(50); // ← har bosganda vibratsiya (50ms)
+  
+  if (count > limit) {
+    count = 0;
+    navigator.vibrate([100, 50, 100]); // ← limitga yetganda kuchli vibratsiya
+  }
+  
+  countEl.textContent = count;
+}
+function reset() {
+  count = 0;
+  countEl.textContent = 0;
+}
+  </script>
+
+</body>
+
+      </html>
